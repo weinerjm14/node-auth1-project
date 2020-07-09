@@ -16,7 +16,7 @@ server.use(
   session({
     // name: 'proj',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     secret: `you can't see me`,
     store: new KnexSessionStore({
       knex: db,

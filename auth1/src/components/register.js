@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { axiosWithAuth } from '../utils/AxiosBase';
+// import { axiosWithAuth } from '../utils/AxiosBase';
 
 export function Register(props) {
   const [creds, setCreds] = useState({
@@ -17,7 +17,7 @@ export function Register(props) {
     try {
       e.preventDefault();
       console.log(creds);
-      const response = await axios()
+      const response = await axios
         .post('http://localhost:5000/api/users', creds)
         .then(res => {
           console.log('register', res);
