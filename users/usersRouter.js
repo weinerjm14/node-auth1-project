@@ -2,11 +2,13 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const Users = require('./user-models');
 const restrict = require('../restrict');
-
+const jwt = require('jsonwebtoken');
+const secrets = require('../config/secrets.js');
 const router = express.Router();
 
 router.get('/users', restrict(), async (req, res, next) => {
   try {
+    console.log('get users request', req);
     res.json(await Users.find());
   } catch (err) {
     next(err);
@@ -59,14 +61,31 @@ router.post('/login', async (req, res, next) => {
     // generate a new session for this user,
     // and sends back a session ID
     req.session.user = user;
+    const token = generateToken(user);
 
     res.json({
       message: `Welcome ${user.username}!`,
+      token,
     });
   } catch (err) {
     next(err);
   }
 });
+
+function generateToken(user) {
+  const payload = {
+    subject: user.id, // sub in payload is what the token is about
+    username: user.username,
+    // ...otherData
+  };
+
+  const options = {
+    expiresIn: '1d', // show other available options in the library's documentation
+  };
+
+  // extract the secret away so it can be required and used where needed
+  return jwt.sign(payload, secrets.jwtSecret, options); // this method is synchronous
+}
 
 router.get('/logout', async (req, res, next) => {
   try {

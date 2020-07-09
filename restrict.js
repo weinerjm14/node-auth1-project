@@ -8,7 +8,7 @@ function restrict() {
 
   return async (req, res, next) => {
     try {
-      if (!req.session || !req.session.user) {
+      if (!req.session || !req.session.user || !req.token) {
         return res.status(401).json(authError);
       }
 
