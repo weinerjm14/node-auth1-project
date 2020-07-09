@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/AxiosBase';
-import axios from 'axios';
 
 export function UserList() {
   const [users, setUsers] = useState([]);
@@ -17,11 +16,11 @@ export function UserList() {
   return (
     <div>
       <h2>Users</h2>
-      <section className="flcontainer">
+      <section className="userslist">
         {users ? (
           users.map(user => {
             return (
-              <section className="friend" key={user.id}>
+              <section className="user" key={user.id}>
                 <h3>{user.username}</h3>
               </section>
             );
