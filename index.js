@@ -14,10 +14,12 @@ server.use(cors());
 server.use(express.json());
 server.use(
   session({
-    // name: 'proj',
+    name: 'proj', // default is connect.sid
+    secret: 'nobody tosses a dwarf!',
+    cookie: { path: '/', httpOnly: true, secure: false, maxAge: null },
+    httpOnly: true, // don't let JS code access cookies. Browser extensions run JS code on your browser!
     resave: false,
     saveUninitialized: true,
-    secret: `you can't see me`,
     store: new KnexSessionStore({
       knex: db,
       createtable: true,

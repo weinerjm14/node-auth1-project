@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import { axiosWithAuth } from '../utils/AxiosBase';
+// import { axiosWithAuth } from '../utils/AxiosBase';
 
 export function Login(props) {
   const [creds, setCreds] = useState({
@@ -20,7 +20,7 @@ export function Login(props) {
     axios
       .post('http://localhost:5000/api/login', creds)
       .then(res => {
-        console.log('login', res);
+        console.log('login1', res);
         localStorage.setItem('token', res.data.token);
         props.history.push('/users');
       })

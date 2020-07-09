@@ -5,8 +5,8 @@ import axios from 'axios';
 export function UserList() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    axios
-      .get('http://localhost:5000/api/users')
+    axiosWithAuth()
+      .get('/users')
       .then(res => {
         console.log('users page', res);
         setUsers(res.data);

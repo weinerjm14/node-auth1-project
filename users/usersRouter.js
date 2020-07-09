@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/users', restrict(), async (req, res, next) => {
   try {
-    console.log('get users request', req);
+    console.log('get users request', req.headers);
     res.json(await Users.find());
   } catch (err) {
     next(err);

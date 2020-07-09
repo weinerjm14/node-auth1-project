@@ -7,8 +7,9 @@ function restrict() {
   };
 
   return async (req, res, next) => {
+    const token = req.header('authorization') || req.cookies.token;
     try {
-      if (!req.session || !req.session.user || !req.token) {
+      if (!token) {
         return res.status(401).json(authError);
       }
 
