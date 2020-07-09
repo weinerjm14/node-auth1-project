@@ -14,9 +14,10 @@ server.use(cors());
 server.use(express.json());
 server.use(
   session({
+    // name: 'proj',
     resave: false,
     saveUninitialized: false,
-    secret: 'keep it secret, keep it safe',
+    secret: `you can't see me`,
     store: new KnexSessionStore({
       knex: db,
       createtable: true,
