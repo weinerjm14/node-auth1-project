@@ -1,0 +1,46 @@
+.full-container {
+  text-align: center;
+  background-color: floralwhite;
+}
+.nav {
+  background-color: rebeccapurple;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav a {
+  text-decoration: none;
+  color: white;
+}
+.lobutton {
+  height: 50%;
+}
+.userslist {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 3%;
+}
+.user {
+  width: 22%;
+  padding: 1%;
+  border: 3px inset rebeccapurple;
+  margin: 2%;
+  background-color: lavenderblush;
+}
+h4,
+p {
+  color: rebeccapurple;
+}
+label {
+  font-weight: 600;
+}
+.loginForm {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+}
+.loginForm input {
+  margin: 3%;
+}
